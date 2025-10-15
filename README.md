@@ -48,13 +48,6 @@ JavaScript (ES6+): For all the application logic, state management, and interact
 
 Lucide Icons: For clean and lightweight SVG icons.
 
-⚙️ Getting Started
-Since this is a client-side prototype contained in a single HTML file, there is no complex setup required.
-
-Clone the repository:
-
-git clone [https://github.com/your-username/document-portal.git](https://github.com/your-username/document-portal.git)
-
 Navigate to the directory:
 
 cd document-portal
