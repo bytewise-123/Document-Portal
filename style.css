@@ -1,0 +1,51 @@
+body { 
+    font-family: 'Inter', sans-serif; 
+}
+
+.fade-in { 
+    animation: fadeIn 0.5s ease-in-out; 
+}
+
+@keyframes fadeIn { 
+    from { opacity: 0; transform: translateY(-10px); } 
+    to { opacity: 1; transform: translateY(0); } 
+}
+
+/* Status Badge Colors */
+.status-badge { 
+    display: inline-flex; 
+    align-items: center; 
+    padding: 0.25rem 0.75rem; 
+    border-radius: 9999px; 
+    font-size: 0.75rem; 
+    font-weight: 500; 
+    white-space: nowrap; 
+}
+.status-received { background-color: #f3f4f6; color: #4b5563; }
+.status-submitted { background-color: #e0e7ff; color: #3730a3; }
+.status-processing { background-color: #dbeafe; color: #1e40af; }
+.status-action-required { background-color: #fef9c3; color: #854d0e; }
+.status-resubmitted { background-color: #ffedd5; color: #9a3412; }
+.status-ready { background-color: #d1fae5; color: #065f46; }
+.status-collected { background-color: #e5e7eb; color: #374151; }
+.status-closed { background-color: #e5e7eb; color: #374151; }
+
+/* Custom scrollbar */
+::-webkit-scrollbar { 
+    width: 8px; 
+}
+::-webkit-scrollbar-track { 
+    background: #f1f5f9; 
+}
+::-webkit-scrollbar-thumb { 
+    background: #cbd5e1; 
+    border-radius: 10px; 
+}
+::-webkit-scrollbar-thumb:hover { 
+    background: #94a3b8; 
+}
+
+/* Modal styling */
+.modal-content { 
+    max-height: 90vh; 
+}

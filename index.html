@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student & Staff Document Portal</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <div id="login-page" class="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-100 to-slate-200 p-4">
+        <div class="w-full max-w-md bg-white p-8 rounded-2xl shadow-lg fade-in">
+            <div class="text-center mb-8">
+                <h1 class="text-3xl font-bold text-slate-900">Document Portal</h1>
+                <p class="text-slate-500 mt-2">Select your role to sign in</p>
+            </div>
+            <div class="space-y-4">
+                <button id="login-student" class="w-full flex items-center justify-center gap-3 bg-blue-600 text-white font-semibold py-3 px-4 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-transform transform hover:scale-105 shadow-md">
+                    <i data-lucide="user"></i> Login as Student
+                </button>
+                <button id="login-staff" class="w-full flex items-center justify-center gap-3 bg-slate-700 text-white font-semibold py-3 px-4 rounded-lg hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-500 transition-transform transform hover:scale-105 shadow-md">
+                    <i data-lucide="shield"></i> Login as Staff
+                </button>
+            </div>
+            <p class="text-xs text-slate-400 text-center mt-6">This is a prototype. No credentials required.</p>
+        </div>
+    </div>
+
+    <div id="student-portal" class="hidden min-h-screen">
+        <header class="bg-white shadow-sm sticky top-0 z-10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center py-4">
+                <div>
+                    <h1 class="text-2xl font-bold text-slate-900">Student Dashboard</h1>
+                    <p class="text-sm text-slate-500">Welcome, xyz (CS2025)</p>
+                </div>
+                <button class="logout-button p-2 rounded-full hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"><i data-lucide="log-out" class="w-5 h-5 text-slate-600"></i></button>
+            </div>
+        </header>
+        <main class="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
+            <div class="flex flex-wrap justify-between items-center gap-4 mb-6">
+                <h2 class="text-xl font-semibold">My Requests</h2>
+                <div class="flex flex-wrap gap-3">
+                    <button id="submit-verification-btn" class="bg-green-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-transform transform hover:scale-105 shadow-md flex items-center gap-2"><i data-lucide="file-check" class="w-4 h-4"></i> Submit for Verification</button>
+                    <button id="new-request-btn" class="bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-transform transform hover:scale-105 shadow-md flex items-center gap-2"><i data-lucide="plus-circle" class="w-4 h-4"></i> New Document Request</button>
+                </div>
+            </div>
+            <div id="student-requests-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                </div>
+        </main>
+    </div>
+
+    <div id="staff-portal" class="hidden min-h-screen">
+       <header class="bg-slate-800 text-white shadow-md sticky top-0 z-10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center py-4">
+                <div>
+                    <h1 class="text-2xl font-bold">Staff Dashboard</h1>
+                    <p class="text-sm text-slate-300">Welcome, John (Admin Staff)</p>
+                </div>
+                <button class="logout-button p-2 rounded-full hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white"><i data-lucide="log-out" class="w-5 h-5"></i></button>
+            </div>
+        </header>
+        <main class="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
+            <h2 class="text-xl font-semibold mb-4">All Student Requests</h2>
+            <div id="staff-requests-list" class="bg-white p-4 rounded-xl shadow-lg">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm text-left text-gray-500">
+                        <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                            <tr>
+                                <th scope="col" class="px-6 py-3">Req ID</th>
+                                <th scope="col" class="px-6 py-3">Student</th>
+                                <th scope="col" class="px-6 py-3">Document / Type</th>
+                                <th scope="col" class="px-6 py-3">Status</th>
+                                <th scope="col" class="px-6 py-3">Last Update</th>
+                                <th scope="col" class="px-6 py-3">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="staff-requests-tbody">
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="request-modal" class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-50 hidden">
+        <div id="modal-content" class="bg-slate-50 rounded-2xl shadow-xl w-full max-w-3xl fade-in modal-content overflow-y-auto">
+           </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
